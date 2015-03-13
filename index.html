@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Clock Demo</title>
+		<link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+		<link href="css/styles.css" media="all" rel="stylesheet" />
+	</head>
+	<body>
+		<figure id="clock"></figure>
+		<div id="controls" style="display:none">
+			<input type="range" min="0" max="1439" value="420" id="slider" step="1" oninput="Clock.set(Math.floor(value/60), value%60, true);"/>
+			<input id="enablesound" type="checkbox"/> Sound
+			<input name="speedup" type="radio" value="1" checked/> 1x
+			<input name="speedup" type="radio" value="60"/> 60x
+			<input name="speedup" type="radio" value="600"/> 600x
+			<input id="reset" type="button" value="Reset"/>
+		</div>
+		<a id="show_controls" href="#">toggle controls</a>
+		<script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="lib/svg.js/dist/svg.js"></script>
+		<script type="text/javascript" src="lib/moment/min/moment.min.js"></script>
+		<script type="text/javascript" src="lib/buzz/dist/buzz.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+	</body>
+</html>
