@@ -111,7 +111,7 @@ var Clock = {
     		if (self.auto) {
     			self.now = new Date();
     		} else {
-    			self.now.setTime(self.now.getTime() + ((self.speedup+1)*1000) );
+    			self.now.setTime(self.now.getTime() + ((self.speedup)*1000) + ( self.speedup > 1 ? 1 : 0) );
     		}
 
             self.update();
