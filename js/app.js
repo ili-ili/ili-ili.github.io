@@ -97,7 +97,14 @@ var Clock = {
 
         this.eventLabel1 = this.svg.text(' ').font({ size: this.font.size*0.55 }).fill({ color: '#777'});
         this.eventLabel2 = this.label2Group.text(' ').font({ size: this.font.size*1.5 }).move(17, -13).fill({ color: '#333'});
-        this.eventLabel3 = this.svg.text(' ').font({ size: this.font.size*0.85 }).fill({ color: '#777'});
+        this.eventLabel3 = this.svg.text(' ').font({ size: this.font.size * 0.6 }).fill({ color: '#777'});
+
+				var m = moment(this.now);
+        this.eventLabel1.text(m.format('ddd MMM Do'));
+        this.eventLabel3.text(m.format(':ss'));
+
+        this.eventLabel1.move(this.center.x - this.eventLabel1.node.clientWidth/2 - 2, this.center.y - this.eventLabel1.node.clientHeight - 15);
+        this.eventLabel3.move(this.center.x - this.eventLabel3.node.clientWidth/2, this.center.y + this.eventLabel3.node.clientHeight + 25);
 
     	var self = this;
     	setInterval(function() {
@@ -183,17 +190,17 @@ var Clock = {
 		// console.log('update', hours, minutes);
 		this.arrow.rotate(this.timeToAngle(hours, minutes)-90, this.center.x, this.center.x);
 		this.timeLabel.text([ pad2(hours), pad2(minutes) ].join(':'));
-		this.timeLabel.move(this.center.x - this.timeLabel.node.clientWidth/2 - 3, this.center.y- this.timeLabel.node.clientHeight/2);
+		//this.timeLabel.move(this.center.x - this.timeLabel.node.clientWidth/2 - 3, this.center.y- this.timeLabel.node.clientHeight/2);
 
 		var m = moment(this.now);
 
         this.eventLabel1.text(m.format('ddd MMM Do'));
         var y = this.center.y - this.eventLabel1.node.clientHeight - 15;
-        this.eventLabel1.move(this.center.x - this.eventLabel1.node.clientWidth/2 - 2, y);
+        // this.eventLabel1.move(this.center.x - this.eventLabel1.node.clientWidth/2 - 2, y);
 
         this.eventLabel3.text(m.format(':ss'));
         var y = this.center.y + this.eventLabel3.node.clientHeight;
-        this.eventLabel3.move(this.center.x - this.eventLabel3.node.clientWidth/2, y + 2);
+        // this.eventLabel3.move(this.center.x - this.eventLabel3.node.clientWidth/2, y + 2);
 		this.drawEvents();
 	},
 	showEventLabel: function (ev) {
